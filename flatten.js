@@ -14,7 +14,7 @@ const flatten = function(testArray){
 }
 
 const assertArraysEqual = function(actual, expected) {
-  if (eqArrays(actual, expected === false)){
+  if (eqArrays(actual, expected) === false){
     statement = console.log(`Assertion Failed:  ${actual} !==  ${expected}`);
   }
     else{ 
