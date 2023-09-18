@@ -1,14 +1,25 @@
+const eqArrays = require('./eqArrays');
+const assertArraysEqual = require('./assertArraysEqual');
+
+
 const without = function(source, itemsToRemove) {
   let newArray = [];
+  let checker = false;
   for (let x = 0; x < source.length; x++) {
-    if (!itemsToRemove.includes(source[x])) {
+    for (let y = 0; y < itemsToRemove.length; y++) {
+      if (source[x] === itemsToRemove[y]) {
+        checker = true;
+      }
+    }
+    if (checker === false) {
       newArray.push(source[x]);
     }
+    checker = false;
   }
   return newArray;
 };
 
-const eqArrays = function(actual, expected) {
+/* const eqArrays = function(actual, expected) {
   if (actual.length !== expected.length){
     return false;
   }
@@ -37,4 +48,5 @@ assertArraysEqual(without(["1", "1", "1", "2", "3", "1" , "1"], ["1", 2, "3"]) ,
 const words = ["hello", "world", "lighthouse"];
 without(["hello", "world", "lighthouse"], ["lighthouse"]); 
 assertArraysEqual(words, ["hello", "world", "lighthouse"]);
-
+*/
+module.exports = without;
