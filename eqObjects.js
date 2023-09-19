@@ -1,12 +1,7 @@
-const assertEqual = function(actual, expected) {
-  let statement = '';
-  if (actual === expected) {
-    statement = console.log(`Assertion Passed:  ${actual} ===  ${expected}`);
-  } else {
-    statement = console.log(`Assertion Failed:  ${actual} !==  ${expected}`);
-  }
-  return statement;
-};
+const assertEqual = require('./assertEqual');
+const eqArrays = require('./eqArrays');
+
+
 
 const eqObjects = function(object1, object2) {
   let keysArray1 = Object.keys(object1);
@@ -30,6 +25,17 @@ const eqObjects = function(object1, object2) {
   }
   return true;
 };
+
+/* const assertEqual = function(actual, expected) {
+  let statement = '';
+  if (actual === expected) {
+    statement = console.log(`Assertion Passed:  ${actual} ===  ${expected}`);
+  } else {
+    statement = console.log(`Assertion Failed:  ${actual} !==  ${expected}`);
+  }
+  return statement;
+};
+
 const eqArrays = function(actual, expected) {
   if (actual.length !== expected.length){
     return false;
@@ -41,6 +47,7 @@ const eqArrays = function(actual, expected) {
     }
   return true;
 };
+*/
 
 const multiColorShirtObject = { colors: ["red", "blue", ], size: "medium" };
 const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
@@ -75,3 +82,5 @@ object4 = {
 
 assertEqual(eqObjects(object1, object2), false);
 assertEqual(eqObjects(object3, object4), true);
+
+module.exports = eqObjects;
